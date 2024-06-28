@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+// Điều hướng qua artisan của controller
+// php artisan make:controller tên Controller
+Route::get('list-product', [ProductController::class, 'showProduct']);
+//slug
+Route::get('get-product/{id}/{name?}', [ProductController::class, 'getProduct']);
+//params
+Route::get('update-product', [ProductController::class, 'updateProduct']);
+
+
