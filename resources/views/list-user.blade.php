@@ -11,14 +11,14 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>NAME</th>
+                <th>User</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($abc as $value)
+            @foreach($listUsers as $value)
                 <tr>
-                    <td>{{$value['id']}}</td>
-                    <td>{{$value['name']}}</td>
+                    <td>{{$value->id}}</td>
+                    <td>{{$value->name}}</td>
                 </tr>
             @endforeach
 

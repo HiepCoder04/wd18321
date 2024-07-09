@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +19,17 @@ Route::get('/', function () {
 });
 // Điều hướng qua artisan của controller
 // php artisan make:controller tên Controller
-Route::get('list-product', [ProductController::class, 'showProduct']);
+Route::get('list-user', [UserController::class, 'showUser']);
 //slug
-Route::get('get-product/{id}/{name?}', [ProductController::class, 'getProduct']);
+Route::get('get-user/{id}/{name?}', [UserController::class, 'getUser']);
 //params
-Route::get('update-product', [ProductController::class, 'updateProduct']);
+// Route::get('update-product', [ProductController::class, 'updateProduct']);
 
+Route::group(['prefix' => 'users','as' =>'users.'], function(){
+   Route::get('/list-users',[UserController::class, 'listUsers'])->name('listUsers');
+   Route::get('add-users',[UserController::class, 'addUsers'])->name('addUsers');
+   Route::post('add-users',[UserController::class, 'addPostUsers'])->name('addPostUsers');
+   Route::get('delete-users/{idUser}',[UserController::class, 'deleteUser'])->name('deleteUser');
+
+});
 
