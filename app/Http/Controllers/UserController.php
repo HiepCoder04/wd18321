@@ -116,4 +116,7 @@ class UserController extends Controller
         return redirect()->route('users.listUsers');
 
     }
+    public function test(){
+        return view('admin/product/list-product');
+    }
 }

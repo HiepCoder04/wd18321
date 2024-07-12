@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,14 @@ Route::group(['prefix' => 'users','as' =>'users.'], function(){
 
 });
 
+Route::prefix('product')->group(function(){
+    Route::get('/list-product',[ProductController::class,'listProduct'])->name('product.index');
+    Route::get('/add-product',[ProductController::class,'addProduct'])->name('product.addProduct');
+    Route::post('/post-product',[ProductController::class,'postProduct'])->name('product.postProduct');
+    Route::get('/delelte/{id}',[ProductController::class,'deleteProduct'])->name('product.delete');
+    Route::get('/edit/{id}',[ProductController::class,'editProduct'])->name('product.edit');
+    Route::post('/update/{id}',[ProductController::class,'updateProduct'])->name('product.update');
+    Route::post('/timkiem',[ProductController::class,'timkiem'])->name('product.timkiem');
+
+});
+Route::get('test',[UserController::class, 'test']);
