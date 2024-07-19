@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product', function (Blueprint $table) {
-            $table->unsignedInteger('product_id')->autoIncrement();
-            $table->string('name',20);
-            $table->string('description',500)->nullable();
-            $table->float('price',10,2)->default(800.02);
+        Schema::create('orders', function (Blueprint $table) {
+            $table->unsignedInteger('order_id')->autoIncrement();
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
+            $table->float('totalPrice',10,2);
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product');
+        Schema::dropIfExists('orders');
     }
 };
